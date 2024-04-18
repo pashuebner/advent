@@ -70,10 +70,41 @@
               Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
               dolor sit amet.
             </p>
+            <h1>Bleiben Sie informiert</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+              erat, sed diam voluptua.
+            </p>
+            <form id="registrationForm">
+              <label for="number">Kalendernummer:</label>
+              <input type="text" id="number" name="number" required />
+              <label for="email">Email Adresse:</label>
+              <input type="email" id="email" name="email" required />
+
+              <button type="button" onclick="submitForm()">Submit</button>
+            </form>
           </div>
         </section>
       </div>
     </div>
+    <script type="text/javascript" src="/js/functions.js"></script>
+    <script>
+      function submitForm() {
+        const email = document.getElementById("email").value;
+        const winnerNumber = document.getElementById("number").value;
+
+        fetch("/save", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, winnerNumber }),
+        })
+          .then((response) => response.text())
+          .then((data) => alert(data))
+          .catch((error) => console.error("Fehler:", error));
+      }
+    </script>
   </body>
-  <script type="text/javascript" src="/js/functions.js"></script>
 </html>
