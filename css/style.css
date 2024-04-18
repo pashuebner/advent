@@ -356,3 +356,9 @@ body.scrolled .content {
 .inner-sec p {
     line-height: 1.5;
 }
+
+@media (max-width:999px) {
+    nav .navspacer a {
+        display: none !important;
+    }
+}
